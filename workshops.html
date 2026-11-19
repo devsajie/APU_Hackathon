@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshops | LBEF/APU Hackathon 2026</title>
+    <meta name="description" content="Explore expert-led technology workshops and seminars hosted during the hackathon.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="branding" id="brandingLogo">
+                <img src="images/logo/lbef_logo.webp" alt="LBEF Logo" class="logo-img">
+                <span class="logo-divider">×</span>
+                <img src="images/logo/apu_logo.webp" alt="APU Logo" class="logo-img">
+                <div class="branding-text">
+                    <span class="branding-title">LBEF/APU</span>
+                    <span class="branding-subtitle">Hackathon 2026</span>
+                </div>
+            </a>
+            <button class="hamburger" id="hamburgerToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="index.html" class="nav-link" id="nav-home">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link" id="nav-about">About</a></li>
+                <li class="nav-item"><a href="schedule.html" class="nav-link" id="nav-schedule">Schedule</a></li>
+                <li class="nav-item"><a href="challenges.html" class="nav-link" id="nav-challenges">Challenges</a></li>
+                <li class="nav-item"><a href="workshops.html" class="nav-link active" id="nav-workshops">Workshops</a></li>
+                <li class="nav-item"><a href="register.html" class="nav-link" id="nav-register">Register</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">More</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="rules.html" class="nav-link" id="nav-rules">Rules</a></li>
+                        <li><a href="resources.html" class="nav-link" id="nav-resources">Resources</a></li>
+                        <li><a href="gallery.html" class="nav-link" id="nav-gallery">Gallery</a></li>
+                        <li><a href="news.html" class="nav-link" id="nav-news">News</a></li>
+                        <li><a href="faq.html" class="nav-link" id="nav-faq">FAQ</a></li>
+                        <li><a href="contact.html" class="nav-link" id="nav-contact">Contact</a></li>
+                        <li><a href="sponsors.html" class="nav-link" id="nav-sponsors">Sponsors</a></li>
+                        <li><a href="feedback.html" class="nav-link" id="nav-feedback">Feedback</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle theme">🌙 Dark Mode</button></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Page Hero Banner -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Mentoring & Technical Workshops</h1>
+            <p>Enhance your knowledge and polish your prototype with guided expert lectures.</p>
+        </div>
+    </section>
+
+    <!-- Workshops Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Available Sessions</h2>
+            <p class="section-subtitle">Attending workshops is highly recommended to align your project structure with the evaluation rubrics.</p>
+            
+            <div class="grid-2">
+                <article class="card workshop-card">
+                    <div class="card-img workshop-poster">
+                        <img src="images/workshops/ai.png" alt="Explore BEST AI COURSES in Nepal workshop poster">
+                    </div>
+                    <div class="card-body workshop-card-body">
+                        <div>
+                            <span class="card-tag tag-ai">Artificial Intelligence</span>
+                            <h3>Explore BEST AI COURSES in Nepal</h3>
+                        </div>
+                        <button class="btn btn-primary workshop-details-button" type="button" data-workshop-details="ai">View Details</button>
+                    </div>
+                </article>
+
+                <article class="card workshop-card">
+                    <div class="card-img workshop-poster">
+                        <img src="images/workshops/cloud.png" alt="AWS Student Community Day Kathmandu 2026 poster">
+                    </div>
+                    <div class="card-body workshop-card-body">
+                        <div>
+                            <span class="card-tag tag-cloud">Cloud Architecture</span>
+                            <h3>AWS STUDENT COMMUNITY DAY KATHMANDU 2026</h3>
+                        </div>
+                        <button class="btn btn-primary workshop-details-button" type="button" data-workshop-details="cloud">View Details</button>
+                    </div>
+                </article>
+
+                <article class="card workshop-card">
+                    <div class="card-img workshop-poster">
+                        <img src="images/workshops/cyber.png" alt="Girls' in Cybersecurity workshop poster">
+                    </div>
+                    <div class="card-body workshop-card-body">
+                        <div>
+                            <span class="card-tag tag-cyber">Cybersecurity</span>
+                            <h3>Girls' in Cybersecurity</h3>
+                        </div>
+                        <button class="btn btn-primary workshop-details-button" type="button" data-workshop-details="cyber">View Details</button>
+                    </div>
+                </article>
+
+                <article class="card workshop-card">
+                    <div class="card-img workshop-poster">
+                        <img src="images/workshops/web.png" alt="Ethical Hacking and Web Application Penetration Testing workshop poster">
+                    </div>
+                    <div class="card-body workshop-card-body">
+                        <div>
+                            <span class="card-tag tag-web">Web Security</span>
+                            <h3>Ethical Hacking &amp; Web Application Penetration Testing</h3>
+                        </div>
+                        <button class="btn btn-primary workshop-details-button" type="button" data-workshop-details="web">View Details</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <div class="workshop-modal" id="workshopModal" role="dialog" aria-modal="true" aria-labelledby="workshopModalTitle" aria-hidden="true" hidden>
+        <div class="workshop-dialog">
+            <button class="workshop-modal-close" id="workshopModalClose" type="button" aria-label="Close workshop details">&times;</button>
+            <img class="workshop-modal-image" id="workshopModalImage" src="" alt="">
+            <div class="workshop-modal-content">
+                <p class="workshop-modal-header" id="workshopModalHeader"></p>
+                <span class="workshop-modal-badge" id="workshopModalBadge" hidden></span>
+                <h2 id="workshopModalTitle"></h2>
+                <p class="workshop-modal-subtitle" id="workshopModalSubtitle"></p>
+                <dl class="workshop-detail-list" id="workshopModalDetails"></dl>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col footer-about">
+                <h3>LBEF/APU Hackathon 2026</h3>
+                <p>An academic technology event co-hosted by Lord Buddha Education Foundation (Nepal) and Asia Pacific University of Technology & Innovation (Malaysia).</p>
+                <p><a href="https://www.lbef.edu.np/" target="_blank" rel="noopener noreferrer">Lord Buddha Education Foundation</a><br><a href="https://www.apu.edu.my/" target="_blank" rel="noopener noreferrer">Asia Pacific University</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="challenges.html">Challenges</a></li>
+                    <li><a href="workshops.html">Workshops</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-contact">
+                <h3>Contact Info</h3>
+                <p>📍 Kathmandu, Nepal</p>
+                <p>📧 info@lbef.edu.np</p>
+                <p>📞 +977-1-4444337</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 LBEF/APU Hackathon.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
