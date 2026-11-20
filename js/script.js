@@ -3,17 +3,22 @@
  */
 
 const emailJsConfig = {
-    publicKey: 'YOUR_EMAILJS_PUBLIC_KEY',
-    serviceId: 'YOUR_EMAILJS_SERVICE_ID',
-    templateId: 'YOUR_EMAILJS_TEMPLATE_ID'
+    publicKey: 'JyVAvHGxP67TwHDjh',
+    serviceId: 'service_fijnqd3',
+    confirmationTemplateId: 'template_486d4bg',
+    adminTemplateId: 'template_d6k5btg',
+    adminEmail: 'guinpen787@gmail.com'
 };
 
-const isEmailJsConfigured = () => Object.values(emailJsConfig).every(
-    (value) => value && !value.startsWith('YOUR_EMAILJS_')
-);
+const isConfigured = (value) => value && !value.startsWith('YOUR_EMAILJS_');
+const isEmailJsConfigured = () => isConfigured(emailJsConfig.publicKey) && isConfigured(emailJsConfig.serviceId);
+const isRegistrationConfigured = () => isEmailJsConfigured()
+    && isConfigured(emailJsConfig.confirmationTemplateId)
+    && isConfigured(emailJsConfig.adminTemplateId);
+const isContactConfigured = () => isEmailJsConfigured() && isConfigured(emailJsConfig.templateId);
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // ==========================================
     // 1. Navigation, More Menu & Hamburger Menu
     // ==========================================
@@ -48,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('click', (e) => {
-        if (navMenu && navMenu.classList.contains('active') && 
+        if (navMenu && navMenu.classList.contains('active') &&
             !navMenu.contains(e.target) && hamburger && !hamburger.contains(e.target)) {
             navMenu.classList.remove('active');
             hamburger.setAttribute('aria-expanded', 'false');
@@ -155,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', () => {
                 // Remove active class from all buttons
                 filterButtons.forEach(btn => btn.classList.remove('active'));
-                
+
                 // Add active class to clicked button
                 button.classList.add('active');
 
@@ -239,9 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            if (!isEmailJsConfigured()) {
+            if (!isRegistrationConfigured()) {
                 if (successAlert) {
-                    successAlert.textContent = 'Your registration details passed validation. Email delivery is not configured, so nothing was sent or stored. Add your EmailJS public key, service ID, and template ID in js/script.js to enable delivery.';
+                    successAlert.textContent = 'Your registration details passed validation. Email delivery is not configured. Add the public key, service ID, confirmation template ID, and admin template ID in js/script.js to enable delivery.';
                     successAlert.style.display = 'block';
                 }
                 registerForm.scrollIntoView({ behavior: 'smooth' });
@@ -259,9 +264,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                await window.emailjs.send(emailJsConfig.serviceId, emailJsConfig.templateId, values);
+                const emailValues = {
+                    ...values,
+                    admin_email: emailJsConfig.adminEmail
+                };
+
+                await Promise.all([
+                    window.emailjs.send(
+                        emailJsConfig.serviceId,
+                        emailJsConfig.confirmationTemplateId,
+                        emailValues
+                    ),
+                    window.emailjs.send(
+                        emailJsConfig.serviceId,
+                        emailJsConfig.adminTemplateId,
+                        emailValues
+                    )
+                ]);
+
                 if (successAlert) {
-                    successAlert.textContent = 'Registration submitted successfully. A confirmation will be sent to the team leader email address.';
+                    successAlert.textContent = 'Registration submitted successfully. Confirmation sent to the team leader email and organizer notified.';
                     successAlert.style.display = 'block';
                 }
                 registerForm.reset();
@@ -528,9 +550,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            if (!isEmailJsConfigured()) {
+            if (!isContactConfigured()) {
                 if (successAlert) {
-                    successAlert.textContent = 'Your message passed validation. Email delivery is not configured, so it was not sent or stored. Add your EmailJS public key, service ID, and template ID in js/script.js to enable delivery.';
+                    successAlert.textContent = 'Your message passed validation. Email delivery is not configured. Add your EmailJS public key, service ID, and contact template ID in js/script.js to enable delivery.';
                     successAlert.style.display = 'block';
                 }
                 return;
